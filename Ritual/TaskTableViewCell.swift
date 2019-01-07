@@ -47,7 +47,7 @@ class TaskTableViewCell: UITableViewCell {
       isTaskDone = true
       radioButton.setImage(UIImage(named: "radio-button-selected"), for: .normal)
       taskLabel.textColor = .gray
-      taskLabel.attributedText = NSAttributedString(string: taskDescription, attributes:[NSAttributedStringKey.strikethroughStyle: 1])
+      taskLabel.attributedText = NSAttributedString(string: taskDescription, attributes:[NSAttributedString.Key.strikethroughStyle: 1])
     }
   }
 }
