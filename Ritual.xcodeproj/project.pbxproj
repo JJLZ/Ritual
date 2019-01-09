@@ -18,6 +18,9 @@
 		00B841EC1FCBAA330069A348 /* TaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B841EB1FCBAA330069A348 /* TaskTableViewController.swift */; };
 		00B841EF1FD087F50069A348 /* TaskDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B841EE1FD087F50069A348 /* TaskDetailsViewController.swift */; };
 		74995DD566ABDC16E33CFBB0 /* Pods_Ritual.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C9B81C1638927AABB63E236 /* Pods_Ritual.framework */; };
+		D464A53921E678A700D8C8C3 /* TrackingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D464A53821E678A700D8C8C3 /* TrackingManager.swift */; };
+		D464A53C21E67EA600D8C8C3 /* ReminderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D464A53A21E67EA600D8C8C3 /* ReminderTableViewController.swift */; };
+		D464A53D21E67EA600D8C8C3 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D464A53B21E67EA600D8C8C3 /* PickerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +60,9 @@
 		6C9B81C1638927AABB63E236 /* Pods_Ritual.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ritual.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7607D102DBCBC98F92B1A122 /* Pods-Ritual.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ritual.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ritual/Pods-Ritual.debug.xcconfig"; sourceTree = "<group>"; };
 		B76F49DE30E3D42872F56D5F /* Pods-Ritual.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ritual.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ritual/Pods-Ritual.release.xcconfig"; sourceTree = "<group>"; };
+		D464A53821E678A700D8C8C3 /* TrackingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingManager.swift; sourceTree = "<group>"; };
+		D464A53A21E67EA600D8C8C3 /* ReminderTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderTableViewController.swift; sourceTree = "<group>"; };
+		D464A53B21E67EA600D8C8C3 /* PickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +124,7 @@
 				00B841BF1FC37F110069A348 /* Assets.xcassets */,
 				00B841C11FC37F110069A348 /* LaunchScreen.storyboard */,
 				00B841C41FC37F110069A348 /* Info.plist */,
+				D464A53821E678A700D8C8C3 /* TrackingManager.swift */,
 			);
 			path = Ritual;
 			sourceTree = "<group>";
@@ -151,6 +158,8 @@
 		00B841ED1FD087C90069A348 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D464A53B21E67EA600D8C8C3 /* PickerViewController.swift */,
+				D464A53A21E67EA600D8C8C3 /* ReminderTableViewController.swift */,
 				00B841EB1FCBAA330069A348 /* TaskTableViewController.swift */,
 				00B841EE1FD087F50069A348 /* TaskDetailsViewController.swift */,
 			);
@@ -186,6 +195,7 @@
 				00B841B21FC37F110069A348 /* Frameworks */,
 				00B841B31FC37F110069A348 /* Resources */,
 				D4DE062221E5787E00582AB2 /* ShellScript */,
+				8DD5C0B585061CCF8EBD5E55 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -331,6 +341,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		8DD5C0B585061CCF8EBD5E55 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Ritual/Pods-Ritual-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Mixpanel-swift/Mixpanel.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mixpanel.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Ritual/Pods-Ritual-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D4DE062221E5787E00582AB2 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -356,7 +388,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D464A53921E678A700D8C8C3 /* TrackingManager.swift in Sources */,
 				00B841EF1FD087F50069A348 /* TaskDetailsViewController.swift in Sources */,
+				D464A53D21E67EA600D8C8C3 /* PickerViewController.swift in Sources */,
+				D464A53C21E67EA600D8C8C3 /* ReminderTableViewController.swift in Sources */,
 				00B841EC1FCBAA330069A348 /* TaskTableViewController.swift in Sources */,
 				00B841EA1FCA66AE0069A348 /* Task.swift in Sources */,
 				00B841B91FC37F110069A348 /* AppDelegate.swift in Sources */,

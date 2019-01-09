@@ -3,18 +3,18 @@ import UIKit
 class TaskTableViewController: UITableViewController {
     
     var tasks: [Task?] = []
+    private var tasksKey = "Tasks"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadSampleTasks()
+        loadTasks()
     }
     
-    private func loadSampleTasks() {
-        let task1 = Task.init(description: "Task 1", notes: nil)
-        let task2 = Task.init(description: "Task 2", notes: nil)
-        
-        tasks += [task1, task2]
+    private func loadTasks() {
+        if let decoded = UserDefaults.standard.data(forKey: tasksKey) {
+            tasks = NSKeyedUnarchiver.unarchiveObject(with: decoded) as? [Task?] ?? []
+        }
     }
 }
 
@@ -35,15 +35,25 @@ extension TaskTableViewController {
             fatalError("The dequeued cell is not an instance of TaskTableViewCell")
         }
         
-        cell.taskLabel.text = tasks[indexPath.row]?.description
+        cell.taskLabel.text = tasks[indexPath.row]?.taskDescription
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            tasks.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
     }
 }
 
 extension TaskTableViewController {
     // MARK: - Navigation
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         guard let segueID = segue.identifier else { return }
@@ -69,33 +79,32 @@ extension TaskTableViewController {
         }
     }
     
+    
     //MARK: Actions
     @IBAction func unwindToTaskList(sender: UIStoryboardSegue) {
+        
         if let sourceViewController = sender.source as? TaskDetailsViewController, let task = sourceViewController.task {
+            
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
-                // Update an existing task.
                 tasks[selectedIndexPath.row] = task
                 tableView.reloadRows(at: [selectedIndexPath], with: .none)
             } else {
-                // Add a new task.
                 let newIndexPath = IndexPath(row: tasks.count, section: 0)
-                
                 tasks.append(task)
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
+                
+                self.trackCreateTask(task)
             }
+            self.saveTasks()
         }
     }
     
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        
-        return true
+    private func saveTasks() {
+        let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: tasks)
+        UserDefaults.standard.set(encodedData, forKey: tasksKey)
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
-        if editingStyle == .delete {
-            tasks.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        }
+    private func trackCreateTask(_ task: Task) {
+        TrackingManager.trackEvent(name: "Create Task", eventProperties: ["isReminderSet": task.isReminderSet])
     }
 }
