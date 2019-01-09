@@ -9,6 +9,7 @@ class TaskTableViewController: UITableViewController {
         super.viewDidLoad()
         
         loadTasks()
+        TrackingManager.startTrackingTimedEvent(name: "Create Task")
     }
     
     private func loadTasks() {

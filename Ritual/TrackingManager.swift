@@ -23,4 +23,8 @@ class TrackingManager {
         
         Mixpanel.mainInstance().track(event: name, properties: eventProperties)
     }
+    
+    static func startTrackingTimedEvent(name: String) {
+        Mixpanel.mainInstance().time(event: name)
+    }
 }
