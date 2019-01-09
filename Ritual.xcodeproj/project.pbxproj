@@ -17,6 +17,7 @@
 		00B841EA1FCA66AE0069A348 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B841E91FCA66AD0069A348 /* Task.swift */; };
 		00B841EC1FCBAA330069A348 /* TaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B841EB1FCBAA330069A348 /* TaskTableViewController.swift */; };
 		00B841EF1FD087F50069A348 /* TaskDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B841EE1FD087F50069A348 /* TaskDetailsViewController.swift */; };
+		74995DD566ABDC16E33CFBB0 /* Pods_Ritual.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C9B81C1638927AABB63E236 /* Pods_Ritual.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,9 @@
 		00B841E91FCA66AD0069A348 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		00B841EB1FCBAA330069A348 /* TaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewController.swift; sourceTree = "<group>"; };
 		00B841EE1FD087F50069A348 /* TaskDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailsViewController.swift; sourceTree = "<group>"; };
+		6C9B81C1638927AABB63E236 /* Pods_Ritual.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ritual.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7607D102DBCBC98F92B1A122 /* Pods-Ritual.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ritual.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ritual/Pods-Ritual.debug.xcconfig"; sourceTree = "<group>"; };
+		B76F49DE30E3D42872F56D5F /* Pods-Ritual.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ritual.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ritual/Pods-Ritual.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74995DD566ABDC16E33CFBB0 /* Pods_Ritual.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +92,8 @@
 				00B841CC1FC37F110069A348 /* RitualTests */,
 				00B841D71FC37F110069A348 /* RitualUITests */,
 				00B841B61FC37F110069A348 /* Products */,
+				7D829EE30431577624700395 /* Pods */,
+				D3574043898E87380691F7DD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -150,6 +157,23 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		7D829EE30431577624700395 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7607D102DBCBC98F92B1A122 /* Pods-Ritual.debug.xcconfig */,
+				B76F49DE30E3D42872F56D5F /* Pods-Ritual.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D3574043898E87380691F7DD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6C9B81C1638927AABB63E236 /* Pods_Ritual.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -157,9 +181,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00B841DD1FC37F110069A348 /* Build configuration list for PBXNativeTarget "Ritual" */;
 			buildPhases = (
+				1CC35E145C05CB7480295CD5 /* [CP] Check Pods Manifest.lock */,
 				00B841B11FC37F110069A348 /* Sources */,
 				00B841B21FC37F110069A348 /* Frameworks */,
 				00B841B31FC37F110069A348 /* Resources */,
+				D4DE062221E5787E00582AB2 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -281,6 +307,49 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1CC35E145C05CB7480295CD5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Ritual-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D4DE062221E5787E00582AB2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" bc14c86697ca2c0c61b42dc19eeeece6320f9a40 fc95d08758c8d537f4d24982a62350bf20eac8ca234ce29ec7b8f7e21b230fc4\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		00B841B11FC37F110069A348 /* Sources */ = {
@@ -459,13 +528,15 @@
 		};
 		00B841DE1FC37F110069A348 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7607D102DBCBC98F92B1A122 /* Pods-Ritual.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 69A85A3TC3;
 				INFOPLIST_FILE = Ritual/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.raywenderlich.Ritual;
+				PRODUCT_BUNDLE_IDENTIFIER = com.emprendesoft.Ritual;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -474,13 +545,14 @@
 		};
 		00B841DF1FC37F110069A348 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B76F49DE30E3D42872F56D5F /* Pods-Ritual.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 69A85A3TC3;
 				INFOPLIST_FILE = Ritual/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.raywenderlich.Ritual;
+				PRODUCT_BUNDLE_IDENTIFIER = com.emprendesoft.Ritual;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
