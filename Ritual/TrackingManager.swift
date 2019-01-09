@@ -17,6 +17,8 @@ class TrackingManager {
         Mixpanel.initialize(token: "6864219ef5371e96d264549dbf8b66e5")
         #endif
         Mixpanel.mainInstance().loggingEnabled = true
+        
+        identifyUser()
     }
     
     static func trackEvent(name: String, eventProperties: [String: MixpanelType]? = nil) {
@@ -27,4 +29,12 @@ class TrackingManager {
     static func startTrackingTimedEvent(name: String) {
         Mixpanel.mainInstance().time(event: name)
     }
+    
+    static func identifyUser() {
+        Mixpanel.mainInstance().identify(distinctId: Mixpanel.mainInstance().distinctId)
+    }
+    
+    static func storeUserProperties(userProperties: [String: MixpanelType]) {
+        Mixpanel.mainInstance().people.set(properties: userProperties)
+    }    
 }

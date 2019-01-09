@@ -103,9 +103,15 @@ extension TaskTableViewController {
     private func saveTasks() {
         let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: tasks)
         UserDefaults.standard.set(encodedData, forKey: tasksKey)
+        
+        trackNumberOfTasks(tasks.count)
     }
     
     private func trackCreateTask(_ task: Task) {
         TrackingManager.trackEvent(name: "Create Task", eventProperties: ["isReminderSet": task.isReminderSet])
+    }
+    
+    private func trackNumberOfTasks(_ numberOfTasks: Int) {
+        TrackingManager.storeUserProperties(userProperties: ["Number of Tasks": numberOfTasks])
     }
 }
